@@ -1,0 +1,78 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model users {
+  users_id             String                 @id @default(uuid()) @db.VarChar(36)
+  email                String                 @unique
+  name                 String                 @db.VarChar(100)
+  image_path           String
+  created_at           DateTime               @default(now())
+  updated_at           DateTime               @default(now()) @updatedAt
+  challenges           challenges[]
+  companies            companies[]
+  programs             programs[]
+  program_participants program_participants[]
+}
+
+model challenges {
+  challenges_id        String                 @id @default(uuid()) @db.VarChar(36)
+  title                String
+  description          String
+  difficulty           Int
+  users_id             String
+  created_at           DateTime               @default(now())
+  updated_at           DateTime               @default(now()) @updatedAt
+  user                 users                  @relation(fields: [users_id], references: [users_id])
+  program_participants program_participants[]
+}
+
+model companies {
+  companies_id         String                 @id @default(uuid()) @db.VarChar(36)
+  name                 String
+  image_path           String?
+  location             String                 @db.VarChar(255)
+  industry             String                 @db.VarChar(255)
+  users_id             String
+  created_at           DateTime               @default(now())
+  updated_at           DateTime               @default(now()) @updatedAt
+  user                 users                  @relation(fields: [users_id], references: [users_id])
+  program_participants program_participants[]
+}
+
+model programs {
+  programs_id          String                 @id @default(uuid()) @db.VarChar(36)
+  title                String
+  description          String
+  start_date           DateTime
+  end_date             DateTime
+  users_id             String
+  created_at           DateTime               @default(now())
+  updated_at           DateTime               @default(now()) @updatedAt
+  user                 users                  @relation(fields: [users_id], references: [users_id])
+  program_participants program_participants[]
+}
+
+model program_participants {
+  program_participants_id String      @id @default(uuid()) @db.VarChar(36)
+  programs_id             String
+  entity_type             ENTITY_TYPE
+  users_id                String?
+  companies_id            String?
+  challenges_id           String?
+  program                 programs    @relation(fields: [programs_id], references: [programs_id], onDelete: Cascade)
+  user                    users?      @relation(fields: [users_id], references: [users_id], onDelete: Cascade)
+  company                 companies?  @relation(fields: [companies_id], references: [companies_id], onDelete: Cascade)
+  challenge               challenges? @relation(fields: [challenges_id], references: [challenges_id], onDelete: Cascade)
+}
+
+enum ENTITY_TYPE {
+  COMPANY
+  USER
+  CHALLENGE
+}

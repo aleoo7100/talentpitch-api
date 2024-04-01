@@ -1,0 +1,8 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "docker compose -f docker-compose-local.yml up -d --build --remove-orphans"
+  }
+}

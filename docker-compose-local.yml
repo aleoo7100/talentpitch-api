@@ -1,0 +1,31 @@
+version: "3.9" # optional since v1.27.0
+services:
+  postgres:
+    image: postgres:12
+    restart: always
+    volumes:
+      - ./db:/var/lib/postgresql/data
+    env_file:
+      - .env
+  prisma:
+    image: node:lts
+    working_dir: /app
+    command: sh -c "npx prisma db push --accept-data-loss --skip-generate"
+    depends_on:
+      - "postgres"
+    volumes:
+      - ./api/prisma:/app/prisma
+    env_file:
+      - .env
+  api:
+    build: ./api
+    restart: always
+    depends_on:
+      - "postgres"
+      - "prisma"
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./api:/app
+    env_file:
+      - .env
