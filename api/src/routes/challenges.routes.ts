@@ -1,7 +1,7 @@
 import { Router } from "express";
 import {
   getChallengesList,
-  getChallengesById,
+  getChallengeById,
   addChallenge,
   updateChallenge,
   deleteChallenge,
@@ -13,7 +13,7 @@ const router: Router = Router();
 
 // completed crud for challenges model
 router.get("/api/v1/challenges", pagination(10), getChallengesList);
-router.get("/api/v1/challenge/:id", getChallengesById);
+router.get("/api/v1/challenge/:id", getChallengeById);
 router.post("/api/v1/challenge", checkChallenge, addChallenge);
 router.put("/api/v1/challenge/:id", checkChallenge, updateChallenge);
 router.delete("/api/v1/challenge/:id", deleteChallenge);

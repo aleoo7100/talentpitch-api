@@ -25,7 +25,7 @@ export async function getUsersList(req: Request, res: Response) {
 }
 
 // route to get a user by its id
-export async function getUsersById(req: Request, res: Response) {
+export async function getUserById(req: Request, res: Response) {
   try {
     // get the user by its id with the program participants, challenges, companies, and programs included
     const user = await prisma.users.findUnique({

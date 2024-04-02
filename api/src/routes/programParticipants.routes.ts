@@ -1,7 +1,7 @@
 import { Router } from "express";
 import {
   getProgramParticipantsList,
-  getProgramParticipantsById,
+  getProgramParticipantById,
   addChallenge,
   updateChallenge,
   deleteChallenge,
@@ -17,7 +17,7 @@ router.get(
   pagination(10),
   getProgramParticipantsList
 );
-router.get("/api/v1/program-participant/:id", getProgramParticipantsById);
+router.get("/api/v1/program-participant/:id", getProgramParticipantById);
 router.post(
   "/api/v1/program-participant",
   checkProgramParticipants,

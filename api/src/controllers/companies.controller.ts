@@ -26,7 +26,7 @@ export async function getCompaniesList(req: Request, res: Response) {
 }
 
 // route to get a company by its id
-export async function getCompaniesById(req: Request, res: Response) {
+export async function getCompanyById(req: Request, res: Response) {
   try {
     // get the company by its id with the program participants included
     const company = await prisma.companies.findUnique({

@@ -29,10 +29,9 @@ export async function insertDummyData(req: Request, res: Response) {
       data: data,
     });
   } catch (error) {
-    console.log("error", error);
     res.status(500).json({
       ok: false,
-      error: error.message,
+      error: error,
     });
   }
 }

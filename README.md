@@ -34,6 +34,10 @@ Este proyecto se ha desarrollado utilizando un conjunto de tecnologías modernas
 
 Esto levantará la base de datos y la aplicación en modo local, quedando disponible en `http://localhost:4000`.
 
+## Test unitarios
+
+Para ejecutar los test unitarios, utiliza el comando `npm run test` o `yarn test`. dentro de la carpeta `api`.
+
 ## Instrucciones de Uso
 
 Para probar el API que esta desplegada en el servidor VPS, puedes acceder a la siguiente URL:

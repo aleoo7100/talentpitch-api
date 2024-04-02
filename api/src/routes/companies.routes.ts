@@ -1,7 +1,7 @@
 import { Router } from "express";
 import {
   getCompaniesList,
-  getCompaniesById,
+  getCompanyById,
   addCompany,
   updateCompany,
   deleteCompany,
@@ -13,7 +13,7 @@ const router: Router = Router();
 
 // completed crud for companies model
 router.get("/api/v1/companies", pagination(10), getCompaniesList);
-router.get("/api/v1/company/:id", getCompaniesById);
+router.get("/api/v1/company/:id", getCompanyById);
 router.post("/api/v1/company", checkCompany, addCompany);
 router.put("/api/v1/company/:id", checkCompany, updateCompany);
 router.delete("/api/v1/company/:id", deleteCompany);

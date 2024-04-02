@@ -27,7 +27,7 @@ export async function getProgramParticipantsList(req: Request, res: Response) {
 }
 
 // route to get a programParticipants by its id
-export async function getProgramParticipantsById(req: Request, res: Response) {
+export async function getProgramParticipantById(req: Request, res: Response) {
   try {
     // get the programParticipants by its id with the program, user, challenge, and company included
     const programParticipants = await prisma.program_participants.findUnique({
@@ -37,7 +37,7 @@ export async function getProgramParticipantsById(req: Request, res: Response) {
     if (!programParticipants) {
       return res.status(404).json({
         ok: false,
-        error: "programParticipants not found",
+        error: "programParticipant not found",
       });
     }
     return res.json({
@@ -53,7 +53,7 @@ export async function getProgramParticipantsById(req: Request, res: Response) {
 }
 
 // route to add a new programParticipants
-export async function addChallenge(req: Request, res: Response) {
+export async function addProgramParticipant(req: Request, res: Response) {
   try {
     // check if there are any validation errors
     const errors = validationResult(req);
@@ -83,7 +83,6 @@ export async function addChallenge(req: Request, res: Response) {
       data: programParticipants,
     });
   } catch (error) {
-    console.log("error", error);
     return res.status(400).json({
       ok: false,
       error,
@@ -92,7 +91,7 @@ export async function addChallenge(req: Request, res: Response) {
 }
 
 // route to update a programParticipants by its id
-export async function updateChallenge(req: Request, res: Response) {
+export async function updateProgramParticipant(req: Request, res: Response) {
   try {
     // check if there are any validation errors
     const errors = validationResult(req);
@@ -136,7 +135,7 @@ export async function updateChallenge(req: Request, res: Response) {
 }
 
 // route to delete a programParticipants by its id
-export async function deleteChallenge(req: Request, res: Response) {
+export async function deleteProgramParticipant(req: Request, res: Response) {
   try {
     // delete the programParticipants by its id
     const programParticipants = await prisma.program_participants.delete({
@@ -146,13 +145,13 @@ export async function deleteChallenge(req: Request, res: Response) {
     if (!programParticipants) {
       return res.status(404).json({
         ok: false,
-        error: "programParticipants not found",
+        error: "programParticipant not found",
       });
     }
 
     return res.json({
       ok: true,
-      data: "programParticipants deleted",
+      data: "programParticipant deleted",
     });
   } catch (error) {
     return res.status(400).json({

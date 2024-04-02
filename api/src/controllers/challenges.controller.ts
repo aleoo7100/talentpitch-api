@@ -26,7 +26,7 @@ export async function getChallengesList(req: Request, res: Response) {
 }
 
 // route to get a challenge by its id
-export async function getChallengesById(req: Request, res: Response) {
+export async function getChallengeById(req: Request, res: Response) {
   try {
     // get the challenge by its id with the program participants included
     const challenge = await prisma.challenges.findUnique({
