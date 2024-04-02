@@ -1,7 +1,7 @@
-import prisma from "../../helpers/prismaClient";
+import prisma from "../helpers/prismaClient";
 import { Request, Response } from "express";
 import { validationResult } from "express-validator";
-import { checkEntityType } from "../../helpers/checkEntiyType";
+import { checkEntityType } from "../helpers/checkEntiyType";
 
 // route to get all programParticipants listed
 export async function getProgramParticipantsList(req: Request, res: Response) {

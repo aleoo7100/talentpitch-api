@@ -1,5 +1,5 @@
-import prisma from "../../helpers/prismaClient";
-import { createCompletion } from "../../helpers/openaiClient";
+import prisma from "../helpers/prismaClient";
+import { createCompletion } from "../helpers/openaiClient";
 import { Request, Response } from "express";
 
 export async function insertDummyData(req: Request, res: Response) {

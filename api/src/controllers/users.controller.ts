@@ -1,4 +1,4 @@
-import prisma from "../../helpers/prismaClient";
+import prisma from "../helpers/prismaClient";
 import { Request, Response } from "express";
 import { validationResult } from "express-validator";
 
