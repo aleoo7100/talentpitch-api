@@ -36,6 +36,9 @@ Esto levantará la base de datos y la aplicación en modo local, quedando dispon
 
 ## Instrucciones de Uso
 
+Para probar el API que esta desplegada en el servidor VPS, puedes acceder a la siguiente URL:
+`https://talentpitch-api.netglow.tech`
+
 Para llenar la base de datos con informacion dummy desde la API de openai, ejecuta el siguiente endpoint:
 
 `GET /api/v1/fill-db`
