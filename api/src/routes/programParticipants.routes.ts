@@ -2,9 +2,9 @@ import { Router } from "express";
 import {
   getProgramParticipantsList,
   getProgramParticipantById,
-  addChallenge,
-  updateChallenge,
-  deleteChallenge,
+  addProgramParticipant,
+  updateProgramParticipant,
+  deleteProgramParticipant,
 } from "../controllers/programParticipants.controller";
 import { checkProgramParticipants } from "../middlewares/formatValidator.middleware";
 import { pagination } from "../middlewares/pagination";
@@ -21,13 +21,13 @@ router.get("/api/v1/program-participant/:id", getProgramParticipantById);
 router.post(
   "/api/v1/program-participant",
   checkProgramParticipants,
-  addChallenge
+  addProgramParticipant
 );
 router.put(
   "/api/v1/program-participant/:id",
   checkProgramParticipants,
-  updateChallenge
+  updateProgramParticipant
 );
-router.delete("/api/v1/program-participant/:id", deleteChallenge);
+router.delete("/api/v1/program-participant/:id", deleteProgramParticipant);
 
 export default router;
