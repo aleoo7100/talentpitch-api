@@ -1,7 +1,7 @@
 import { Router } from "express";
 import {
   getUsersList,
-  getUsersById,
+  getUserById,
   addUser,
   updateUser,
   deleteUser,
@@ -13,7 +13,7 @@ const router: Router = Router();
 
 // completed crud for users model
 router.get("/api/v1/users", pagination(10), getUsersList);
-router.get("/api/v1/user/:id", getUsersById);
+router.get("/api/v1/user/:id", getUserById);
 router.post("/api/v1/user", checkUser, addUser);
 router.put("/api/v1/user/:id", checkUser, updateUser);
 router.delete("/api/v1/user/:id", deleteUser);
